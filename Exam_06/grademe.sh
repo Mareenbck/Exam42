@@ -52,7 +52,7 @@ echo -e "\033[33m[+] Checking syscall error output...\033[0m\033[50G\c"
 ./mini_serv "$port" &> log.txt
 check "$FATAL"
 echo "[+] Killing mini_serv..."
-killall -q mini_serv
+killall -9 mini_serv
 
 
 ### DIFF OUTPUT
@@ -64,7 +64,7 @@ sleep 1
 echo "coucou" | nc localhost "$port"
 check_diff 1
 echo -e "\n[+] Killing mini_serv..."
-killall -q mini_serv
+killall mini_serv
 
 
 echo -e "\n\033[33m[+] 1 client and many messages...\033[0m\033[50G\c"
@@ -82,7 +82,7 @@ echo "last one" | nc localhost "$port"
 echo "✅" | nc localhost "$port"
 check_diff 2
 echo -e "\n[+] Killing mini_serv..."
-killall -q mini_serv
+killall mini_serv
 
 
 echo -e "\n\033[33m[+] 1 client and multi lines...\033[0m\033[50G\c"
